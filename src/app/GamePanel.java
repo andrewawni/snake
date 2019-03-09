@@ -51,7 +51,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
     @Override
     public void run() {
 
-        final int FRAMES_PER_SECOND = 60;
+        final int FRAMES_PER_SECOND = 30;
         final int SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
         final int MAX_FRAMESKIP = 5;
         long next_game_tick = System.currentTimeMillis();
@@ -127,19 +127,19 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         g.setFont(new Font("Roboto", 15, 32));
         g.drawString(title, 10, 32);
         
-        g.setColor(Color.GREEN);
-        Vector2D vec = (Vector2D) snake.get(0);
-        g.drawRect((vec.x+l)%WIDTH, vec.y, 20, 20); 
-        l++;
+        // l++;
         // draw snake
-/*
+        
         for (int i = 0; i < snake.size(); i++) {
+            Vector2D vec = (Vector2D) snake.get(i);
             g.fillRect(vec.x, vec.y, 20, 20);
             g.setColor(Color.WHITE);
-
+            g.setColor(Color.GREEN);
+            g.drawRect(vec.x, vec.y, 20, 20); 
+            
         }
-        // g.dispose();
-*/
+        g.dispose();
+
     }
 
     public void updateGrid() {
@@ -185,8 +185,8 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
 
     @Override
     public void addNotify() {
+        
         super.addNotify();
-
         t = new Thread(this);
         t.start();
     }
