@@ -115,7 +115,7 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         grid[400][400] = '#';
 
     }
-    public int l = 10;
+    
 
     public void paint(Graphics g) {
 
@@ -127,13 +127,13 @@ public class GamePanel extends JPanel implements KeyListener, Runnable {
         g.setFont(new Font("Roboto", 15, 32));
         g.drawString(title, 10, 32);
         
-        // l++;
+        
         // draw snake
         
         for (int i = 0; i < snake.size(); i++) {
             Vector2D vec = (Vector2D) snake.get(i);
-            g.fillRect(vec.x, vec.y, 20, 20);
             g.setColor(Color.WHITE);
+            g.fillRect(vec.x, vec.y, 20, 20);
             g.setColor(Color.GREEN);
             g.drawRect(vec.x, vec.y, 20, 20); 
             
